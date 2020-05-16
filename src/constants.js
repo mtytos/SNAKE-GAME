@@ -1,6 +1,6 @@
 const CANVAS_SIZE = [600, 600];
-const SNAKE_COLOR = 'lightgreen';
-const FOOD_COLOR = 'brown';
+const SNAKE_COLOR = 'pink';
+const FOOD_COLOR = 'lightgreen';
 const SNAKE_START = [
     [8, 7],
     [8, 8]
