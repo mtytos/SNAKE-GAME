@@ -1,11 +1,13 @@
 const CANVAS_SIZE = [600, 600];
+const SNAKE_COLOR = 'lightgreen';
+const FOOD_COLOR = 'brown';
 const SNAKE_START = [
     [8, 7],
     [8, 8]
 ];
 const FOOD_START = [8, 3];
 const SCALE = 40;
-const SPEED = 500;
+const SPEED = 100;
 const DIRECTIONS = {
     38: [0, -1], // up
     40: [0, 1], // down
@@ -15,6 +17,8 @@ const DIRECTIONS = {
 
 export {
     CANVAS_SIZE,
+    SNAKE_COLOR,
+    FOOD_COLOR,
     SNAKE_START,
     FOOD_START,
     SCALE,
