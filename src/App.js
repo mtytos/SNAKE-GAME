@@ -15,11 +15,15 @@ const App = () => {
     const [snake, setSnake] = useState(SNAKE_START);
     const [food, setFood] = useState(FOOD_START);
     const [dir, setDir] = useState([0, -1]);
-    const [speed, setSpeed] = useState(1000);
+    const [speed, setSpeed] = useState(500);
     const [gameOver, setGameover] = useState(false);
 
     const startGame = () => {
-
+        setSnake(SNAKE_START);
+        setFood(FOOD_START);
+        setDir([0, -1]);
+        setSpeed(SPEED);
+        setGameover(false);
     }
 
     const moveSnake = ({ keyCode }) => {
