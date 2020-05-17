@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useInterval } from "./useInterval";
+import React, {useState, useRef, useEffect} from "react";
+import {useInterval} from "./useInterval";
 import {
     CANVAS_SIZE,
     SNAKE_COLOR,
@@ -10,6 +10,8 @@ import {
     SPEED,
     DIRECTIONS
 } from "./constants";
+import Navbar from "./components/Navbar";
+import ButtonStart from "./components/start-btn";
 
 const App = () => {
     const canvasRef = useRef();
@@ -34,7 +36,7 @@ const App = () => {
         setGameOver(true);
     };
 
-    const moveSnake = ({ keyCode }) => {
+    const moveSnake = ({keyCode}) => {
         keyCode >= 37 && keyCode <= 40 && setDir(DIRECTIONS[keyCode]);
     }
 
@@ -88,15 +90,21 @@ const App = () => {
     }, [snake, food, gameOver]);
 
     return (
-        <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
-            <canvas
-                style={{ border: "1px solid black" }}
-                ref={canvasRef}
-                width={`${CANVAS_SIZE[0]}px`}
-                height={`${CANVAS_SIZE[1]}px`}
-            />
-            {gameOver && <div>GAME OVER!</div>}
-            <button onClick={startGame}>Start Game</button>
+        <div>
+            <Navbar />
+            <div className="container center-align">
+                <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
+                    <canvas
+                        style={{border: "1px solid black"}}
+                        ref={canvasRef}
+                        width={`${CANVAS_SIZE[0]}px`}
+                        height={`${CANVAS_SIZE[1]}px`}
+                    />
+                    {gameOver && <div>GAME OVER!</div>}
+                    <br/>
+                    <ButtonStart start={() => startGame()} />
+                </div>
+            </div>
         </div>
     );
 };
