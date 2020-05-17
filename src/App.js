@@ -74,7 +74,18 @@ const App = () => {
     };
 
     const moveSnake = ({keyCode}) => {
-        keyCode >= 37 && keyCode <= 40 && setDir(DIRECTIONS[keyCode]);
+        // up
+        if (dir[0] === 0 && dir[1] === -1)
+            keyCode >= 37 && keyCode <= 39 && setDir(DIRECTIONS[keyCode]);
+        // down
+        if (dir[0] === 0 && dir[1] === 1)
+            keyCode >= 39 && keyCode <= 40 && setDir(DIRECTIONS[keyCode]) || keyCode === 37 && setDir(DIRECTIONS[keyCode]);
+        // right
+        if (dir[0] === 1 && dir[1] === 0)
+            keyCode >= 38 && keyCode <= 40 && setDir(DIRECTIONS[keyCode]);
+        // left
+        if (dir[0] === -1 && dir[1] === 0)
+            keyCode >= 37 && keyCode <= 38 && setDir(DIRECTIONS[keyCode]) || keyCode === 40 && setDir(DIRECTIONS[keyCode]);
     }
 
     const createFood = () =>
@@ -90,7 +101,8 @@ const App = () => {
             return true;
 
         for (const segment of snk) {
-            if (piece[0] === segment[0] && piece[1] === segment[1]) return true;
+            if (piece[0] === segment[0] && piece[1] === segment[1])
+                return true;
         }
         return false;
     };
