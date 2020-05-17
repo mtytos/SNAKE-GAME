@@ -13,6 +13,7 @@ import {
 import Navbar from "./components/Navbar";
 import ButtonStart from "./components/start-btn";
 import GameOver from "./components/GameOver";
+import Score from "./components/Score";
 
 const App = () => {
     const canvasRef = useRef();
@@ -31,6 +32,41 @@ const App = () => {
         setSpeed(SPEED);
         setGameOver(false);
     };
+
+    const levelUp = (snake) => {
+        if (snake >= 4 && snake <= 5)
+            setSpeed(185);
+        if (snake === 6)
+            setSpeed(170);
+        if (snake === 7)
+            setSpeed(160);
+        if (snake === 8)
+            setSpeed(150);
+        if (snake === 9)
+            setSpeed(140);
+        if (snake === 10)
+            setSpeed(130);
+        if (snake === 11)
+            setSpeed(120);
+        if (snake > 11 && snake <= 13)
+            setSpeed(110);
+        if (snake > 13 && snake <= 15)
+            setSpeed(105);
+        if (snake > 15 && snake <= 17)
+            setSpeed(100);
+        if (snake > 17 && snake <= 19)
+            setSpeed(95);
+        if (snake > 19 && snake <= 21)
+            setSpeed(85);
+        if (snake > 21 && snake <= 23)
+            setSpeed(80);
+        if (snake > 23 && snake <= 25)
+            setSpeed(70);
+        if (snake > 25 && snake <= 27)
+            setSpeed(60);
+        if (snake > 27 )
+            setSpeed(50);
+    }
 
     const endGame = () => {
         setSpeed(null);
@@ -75,6 +111,7 @@ const App = () => {
         const snakeCopy = JSON.parse(JSON.stringify(snake));
         const newSnakeHead = [snakeCopy[0][0] + dir[0], snakeCopy[0][1] + dir[1]];
         snakeCopy.unshift(newSnakeHead);
+        levelUp(snake.length);
         if (checkCollision(newSnakeHead)) endGame();
         if (!checkFoodCollision(snakeCopy)) snakeCopy.pop();
         setSnake(snakeCopy);
@@ -97,6 +134,7 @@ const App = () => {
             <div className="container center-align">
                 {gameOver && <GameOver />}
                 <br/>
+                <Score score={snake.length - 2} />
                 <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
                     <canvas
                         style={{border: "5px solid #9575cd"}}
@@ -105,7 +143,7 @@ const App = () => {
                         height={`${CANVAS_SIZE[1]}px`}
                     />
                     <br/><br/>
-                    <ButtonStart start={() => startGame()} />
+                    <ButtonStart start={() => startGame()}/>
                 </div>
             </div>
         </div>
