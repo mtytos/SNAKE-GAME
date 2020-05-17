@@ -92,6 +92,7 @@ const App = () => {
     return (
         <div>
             <Navbar />
+            <br/>
             <div className="container center-align">
                 <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
                     <canvas
@@ -101,7 +102,7 @@ const App = () => {
                         height={`${CANVAS_SIZE[1]}px`}
                     />
                     {gameOver && <div>GAME OVER!</div>}
-                    <br/>
+                    <br/><br/>
                     <ButtonStart start={() => startGame()} />
                 </div>
             </div>
