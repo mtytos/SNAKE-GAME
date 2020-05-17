@@ -1,3 +1,3 @@
-### SNAKE GAME 
+## SNAKE GAME 
 
-in process 
+Just a simple game with react and hooks
