@@ -12,6 +12,7 @@ import {
 } from "./constants";
 import Navbar from "./components/Navbar";
 import ButtonStart from "./components/start-btn";
+import GameOver from "./components/GameOver";
 
 const App = () => {
     const canvasRef = useRef();
@@ -94,6 +95,8 @@ const App = () => {
             <Navbar />
             <br/>
             <div className="container center-align">
+                {gameOver && <GameOver />}
+                <br/>
                 <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
                     <canvas
                         style={{border: "5px solid #9575cd"}}
@@ -101,7 +104,6 @@ const App = () => {
                         width={`${CANVAS_SIZE[0]}px`}
                         height={`${CANVAS_SIZE[1]}px`}
                     />
-                    {gameOver && <div>GAME OVER!</div>}
                     <br/><br/>
                     <ButtonStart start={() => startGame()} />
                 </div>
