@@ -96,7 +96,7 @@ const App = () => {
             <div className="container center-align">
                 <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
                     <canvas
-                        style={{border: "1px solid black"}}
+                        style={{border: "5px solid #9575cd"}}
                         ref={canvasRef}
                         width={`${CANVAS_SIZE[0]}px`}
                         height={`${CANVAS_SIZE[1]}px`}
